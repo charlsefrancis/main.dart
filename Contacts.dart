@@ -22,6 +22,16 @@ class ContactsExampleApp extends StatelessWidget {
         '/nativeContactPicker': (BuildContext context) => ContactPickerPage(),
       },
     );
+    return ListTile(
+      title: Text(
+        pair.asPascalCase,
+        style: _biggerFont,
+      ),
+      trailing: Icon(   // NEW from here... 
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),                // ... to here.
+    );
   }
 }
 
