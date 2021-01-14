@@ -9,6 +9,9 @@ class SeeContactsButton extends StatelessWidget {
     return RaisedButton(
       onPressed: () async {
         final PermissionStatus permissionStatus = await _getPermission();
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ContactsPage()));
+        }else{
         if (permissionStatus == PermissionStatus.granted) {
           //We can now access our contacts here
         }
