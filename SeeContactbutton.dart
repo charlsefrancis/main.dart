@@ -9,7 +9,7 @@ class SeeContactsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      onPressed: () async {
+      onPressed: () async {Jim
         final PermissionStatus permissionStatus = await _getPermission();
         if (permissionStatus == PermissionStatus.granted) {
           Navigator.push(
