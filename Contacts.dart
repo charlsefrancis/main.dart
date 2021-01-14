@@ -85,6 +85,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final alreadySaved = _saved.contains(pair);
     return Scaffold(
       appBar: AppBar(title: const Text('Contacts Plugin Example')),
       body: SafeArea(
