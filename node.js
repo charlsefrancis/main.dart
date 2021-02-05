@@ -6,7 +6,7 @@ item = {
             ":t"    :   "contact",
             ":e"    :   aws
         },
-        ProjectionExpression: "Id,FirstName,LastName,cEmail",
+        ProjectionExpression: "Id,FirstName,LastName,cEmail,shippingAddress,stickers,quantities,shippingType,amountBilled,paymentMethod,TrackingNumber,deliveryStatus,fulfillmentStatus",
     };
     docClient.scan(item, onScan);
     function onScan(err, data) {
