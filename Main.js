@@ -1,7 +1,7 @@
 var params = {
-  TableName: 'Orders', /* required */
+  TableName: 'STRING_VALUE', /* required */
   AttributesToGet: [
-    '',
+    'STRING_VALUE',
     /* more items */
   ],
   ConditionalOperator: AND | OR,
