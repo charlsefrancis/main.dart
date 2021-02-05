@@ -1,24 +1,25 @@
-let datapack=[];
-item = {
-        TableName: orderTable,
-        FilterExpression: "aws = :e AND begins_with ( Id, :t )",
+datapack=[];
+    item = {
+        TableName: ddbTable,
+        IndexName: "cEmailIndex",
+        KeyConditionExpression : "aws = :e AND begins_with ( cEmail, :t )",
         ExpressionAttributeValues: {
-            ":t"    :   "contact",
+            ":t"    :   search,
             ":e"    :   aws
         },
-        ProjectionExpression: "Id,FirstName,LastName,cEmail,shippingAddress,stickers,quantities,shippingType,amountBilled,paymentMethod,TrackingNumber,deliveryStatus,fulfillmentStatus",
+        ProjectionExpression: "Id,FirstName,LastName,cEmail",
     };
-    docClient.scan(item, onScan);
+    docClient.query(item, onScan);
     function onScan(err, data) {
         if (err) {
             console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
-        } else {        
+        } else {
             datapack = datapack.concat(data.Items);
-            });
             if (typeof data.LastEvaluatedKey != "undefined") {
                 item.ExclusiveStartKey = data.LastEvaluatedKey;
-                docClient.scan(item, onScan);
+                docClient.query(item, onScan);
             } else {
+                // console.log(JSON.stringify(datapack));
                 res.json(datapack);
             }
         }
